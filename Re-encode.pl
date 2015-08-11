@@ -27,7 +27,7 @@ foreach (@ARGV){
 	process_file($_,$modfile);
 	}
 
-sub process_file {
+sub process_file {		
 	my @options = @_;
 	open my $source, '<', "$options[0]";
 	my $result = $options[1];
@@ -35,9 +35,9 @@ sub process_file {
 	my $missingchar = join("|", map(quotemeta, sort { length $b <=> length $a } keys %map));
 	while (<$source>) {
 		$/ = undef;
-		s/h;/u;/g;  
-		s/N(.)/$1N/g;
-		s/n(.)/$1n/g;                     #slurp locally
+		s/h;/u;/g;   			#Might need change based on the tamil font
+		s/N(.)/$1N/g;			#Might need change based on the tamil font
+		s/n(.)/$1n/g; 			#Might need change based on the font
 		s/($missingchar)/$map{$1}/g;
 		print "$_";	
 		open my $final, '>:utf8', "$result";
