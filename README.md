@@ -10,3 +10,7 @@ This is a generic software which requires you to map the Tamil Font manually fir
 This program is still in development and is not yet complete.
 
 If you want to use this program to convert other languages, the code of the sub-routine "map_font" has to be remastered as necessary.
+
+Using `konsole` as a terminal will display all the unicode characters properly. 
+
+Gnome-terminal does not display unicode characters properly by default.

@@ -125,7 +125,7 @@ sub output {
 
     if ($p2f) {
 	
-        $filename = "output.U" unless ($filename);
+        $filename = "output.uni" unless ($filename);
         open my $final, '>:encoding(UTF-8)', $filename;
         print $final "$output\n";
         close $final;
