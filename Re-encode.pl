@@ -36,56 +36,29 @@ die "No input to transcode\n" unless (@ARGV);
 
 foreach (@ARGV) {
 
-    if ( $_ =~ /\*/ ) {
+    if ( !-f $_ ) {
 
-        my @file = <"$_">;
-
-        foreach (@file) {
-
-            if ( !-f $_ ){
-                    
-                print "Given arguement is not a file. Transcoding the given text\n";
-                $string = $_;
-                push @transcode, $string;
-                next;
-            }
-            open my $fh, '<', $_ or die "Can't open $_: $!\n";
-            $filehandles{$_.".U"} = $fh;
-        }
-    }else {
-        
-        my $file = <"$_">;
-          
-        if ( !-f $_ ){
-              
-            print "Given arguement is not a file. Transcoding the given text\n";
-            $string = $_;
-            push @transcode, $string;
-            next;
-        }
-
-        open my $fh, '<', $_ or die "Can't open $_: $!\n";
-        $filehandles{$_.".U"} = $fh;
+        print "Given arguement is not a file. Transcoding the given text\n";
+        $string = $_;
+        push @transcode, $string;
+        next;
     }
 
+    open my $fh, '<', $_ or die "Can't open $_: $!\n";
+    my $output_file = $_ . ".U";
+
+    local $/ = undef;
+
+    while (<$fh>) {
+
+        $output = transcode( $_, \%font_map, $replacechar );
+
+        output( $output, $output_file );
+    }
+    close $fh;
 }
 
-if (%filehandles){
-      
-   foreach my $fh( values %filehandles ) {
-    
-       while (<$fh>) {
-
-            local $/ = undef;
-            $output = transcode( $_, \%font_map, $replacechar );
-            
-            my %reversehash = reverse %filehandles;
-            
-            output( $output, $reversehash{$fh} );
-			close $fh;
-       }
-   }
-}elsif (@transcode){
+if (@transcode){
             
     foreach (@transcode){
                
