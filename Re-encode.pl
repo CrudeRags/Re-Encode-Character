@@ -11,21 +11,20 @@ use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure qw(gnu_getopt);
 
-my ($p2f, $font, $source, $output, %font_map, %filehandles, $string, @transcode, $temp);
+my ( $p2f, $font, $source, $output, %font_map, %filehandles, $string, @transcode, $temp );
 
 GetOptions(
-    'print-to-file|p'  => \$p2f,
-    'font|f=s'         => \$font,
-    'use|u=s'          => \$source,
-    'help|h'           => \&usage,
+    'print-to-file|p' => \$p2f,
+    'font|f=s'        => \$font,
+    'use|u=s'         => \$source,
+    'help|h'          => \&usage,
 ) or die "Wrong arguements try $0 -h for help\n";
 
+die "Wrong usage: Both font name and font map has been provided. Both can't be used in a single run.\n\n Try $0 -h for help\n" if ( $font && $source );
 
-die "Wrong usage: Both font name and font map has been provided. Both can't be used in a single run.\n\n Try $0 -h for help\n" if ( $font && $source);
+die "Either font name or font map file should be provided for the program to function\n" unless ( $font || $source );
 
-die "Either font name or font map file should be provided for the program to function\n" unless ($font || $source);
-
-$temp = map_font($font) unless ($source);
+$temp = map_font($font)      unless ($source);
 $temp = restore_map($source) unless ($font);
 
 %font_map = %$temp;
@@ -58,20 +57,18 @@ foreach (@ARGV) {
     close $fh;
 }
 
-if (@transcode){
-            
-    foreach (@transcode){
-               
+if (@transcode) {
+
+    foreach (@transcode) {
+
         $output = transcode( $_, \%font_map, $replacechar );
-            
-        output ( $output );
+
+        output($output);
 
     }
 }
-    
+
 exit 0;
-
-
 
 sub transcode {
 
@@ -80,6 +77,7 @@ sub transcode {
     my %replacement = %$hashstore;
 
     $transcode_text =~ s/h;/u;/g;       # Change as needed {added line due to error in the local files}
+	$transcode_text =~ s/i(.)/$1i/g;    # Change as needed
     $transcode_text =~ s/N(.)/$1N/g;    # Change as needed {added to compensate for the composite letters}
     $transcode_text =~ s/n(.)/$1n/g;    # Change as needed {added to compensate for the composite letters}
     $transcode_text =~ s/($replacechar)/$replacement{$1}/g;
@@ -90,75 +88,59 @@ sub transcode {
 sub output {
 
     my $filename;
-    
+
     my ($output) = shift;
     $filename = shift if (@_);
-	
+
     print "\n$output\n\n" unless ($p2f);
 
     if ($p2f) {
-	
+
         $filename = "output.U" unless ($filename);
         open my $final, '>:encoding(UTF-8)', $filename;
         print $final "$output\n";
         close $final;
 
-    	}
+    }
 
-    	return;
+    return;
 }
 
 sub map_font {
 
-    my %map_font;
+    my (%map_font, $beg, $end, $start, $finish, @chars, $key);
     my ($font) = shift;
 
     $font =~ s/ /_/;
     $font =~ s/(.*?)\.ttf/$1/;
 
-    my @oddhexes =
-      qw/0B95 0B99 0B9A 0B9E 0B9F 0BA3 0BA4 0BA8 0BAA 0BAE 0BAF 0BB0 0BB2 0BB5 0BB3 0BB4 0BB1 0BA9/;
-    my @missingletters = qw/0BC1 0BC2/;
-    my @rest =
-      qw/0B85 0B86 0B87 0B88 0B89 0B8A 0B8E 0B8F 0B90 0B92 0B93 0B83  0BBE  0BBF  0BC0  0BC6  0BC7  0BC8  0BCD  0B9C  0BB7  0BB8  0BB9 0BCB 0BCA 0BCC/;
+	print "Enter the beginning Unicode value of your Language's script: ";
+	chomp($beg = <>);
 
-    foreach (@oddhexes) {
+	print "Enter the last Unicode value of your Language's script: ";
+	chomp($end = <>);
 
-        my $oddhex = $_;
+	$beg =~ s/U\+(.*)/$1/;
+	$end =~ s/U\+(.*)/$1/;
 
-        $_ = chr( hex($_) );
+	$start = hex($beg);
+	$finish = hex($end);
 
-        print "Press the key for $_   :";
-        chomp( my $bole = <> );
+	@chars = ($start .. $finish);
 
-        if ( $bole eq "" ) { next }
-        $map_font{$bole} = $_;
+	foreach (@chars){
+		
+		my $char = chr($_);
+		next unless ($char=~/[[:print:]]/);
 
-        foreach (@missingletters) {
+		print "Type the key for the Unicode Character $char  : ";
+		chomp($key = <>);
 
-            my $oddchar = chr( hex($oddhex) ) . chr( hex($_) );
+		next unless ($key);
 
-            print "Press the key for $oddchar   :";
-            chomp( my $missingchar = <> );
+		$map_font{$key} = $char;
 
-            next if ( $missingchar eq "" );
-
-            $map_font{$missingchar} = $oddchar;
-
-        }
-    }
-
-    foreach (@rest) {
-
-        $_ = chr( hex($_) );
-
-        print "Press the key for $_   :";
-        chomp( my $misc = <> );
-
-        next if ( $misc eq "" );
-        $map_font{$misc} = $_;
-
-    }
+	}
 
     print "\nAre there any extra letters in your font's keymap? (y/n): ";
     chomp( my $reply = lc(<>) );
@@ -169,7 +151,7 @@ sub map_font {
 
         print "\nEnter the number of extra characters: ";
         chomp( $i = <> );
-		for ( $e = 1 ; $e <= $i ; $e++ ) {
+        for ( $e = 1 ; $e <= $i ; $e++ ) {
 
             print "\nEnter the Unicode value of the extra letter(Separate by '.' if composite letter): ";
             chomp( $extrachar = <> );
@@ -177,13 +159,13 @@ sub map_font {
             if ( $extrachar =~ m/\./ ) {
 
                 @s = split /\./, $extrachar;
-		foreach (@s){s/U\+(.*)/$1/}
+                foreach (@s) { s/U\+(.*)/$1/ }
                 $addchar = chr( hex( $s[0] ) ) . chr( hex( $s[1] ) );
 
             }
             else {
-				
-		$extrachar =~ s/U\+(.*)/$1/;
+
+                $extrachar =~ s/U\+(.*)/$1/;
                 $addchar = chr( hex($extrachar) );
 
             }
@@ -208,25 +190,25 @@ sub map_font {
 
 sub restore_map {
 
-    my (%restore_map, $hash_source, $hash_string);
+    my ( %restore_map, $hash_source, $hash_string );
 
     $hash_source = shift;
 
     local $/ = undef;
-    
+
     open my $in, '<', $hash_source or die "$hash_source can't be opened: $!";
     $hash_string = <$in>;
-    
+
     %restore_map = %{ eval $hash_string };
 
     close $in;
 
-    return( \%restore_map );
+    return ( \%restore_map );
 }
 
 sub usage {
 
     print
-"\nUsage: $0 [options] {file1.txt file2.txt..} \n\nExample: $0 -f TamilBible.ttf chapter.txt\n\nOptions:\n\t  -f --font <fontname.ttf> - used to pass font name\n\t  -u --use <source_file> use <source_file> to generate font map (The source file is the stored hash values of a previous mapping)\n\t  -t --transcode-text <text> transcodes typed text to Unicode as given in font map\n\t  -p --print-to-file using this will output the transcoded text to the file appending the extension '.uni' to the input file name. If used with a input string, 'output.uni' is created and the output is printed in that file\n\t  -h --help - Prints help\n\nManual mapping of font is essential for using this program\n\n";
+"\nUsage: $0 [options] {file1.txt file2.txt..} \n\nExample: $0 -f TamilBible.ttf filter.txt\n\nif text is provided insrtead of file name, given text will be transcoded\n\nOptions:\n\n\t-f --font fontname.ttf - used to pass font name\n\n\t-u --use <source_file> generate font map from a source file.\n\t     The source file is the stored hash values of a previous mapping\n\n\t-p --print-to-file using this will output the transcoded text to the file appending the extension '.U' to the input file name. \n\t     If used with a input string, 'output.U' is created and the output is printed in that file\n\n\t-h --help - Prints help\n\nManual mapping of font is essential for using this program\n\n";
     exit 0;
 }
