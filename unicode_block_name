@@ -1,0 +1,88 @@
+[1]Basic Latin[g]					[89]Supplemental Arrows-B				[177]Osmanya
+[2]Latin-1 Supplement[h]				[90]Miscellaneous Mathematical Symbols-B		[178]Elbasan
+[3]Latin Extended-A					[91]Supplemental Mathematical Operators			[179]Caucasian Albanian
+[4]Latin Extended-B					[92]Miscellaneous Symbols and Arrows			[180]Linear A
+[5]IPA Extensions					[93]Glagolitic						[181]Cypriot Syllabary
+[6]Spacing Modifier Letters				[94]Latin Extended-C					[182]Imperial Aramaic
+[7]Combining Diacritical Marks				[95]Coptic						[183]Palmyrene
+[8]Greek and Coptic					[96]Georgian Supplement					[184]Nabataean
+[9]Cyrillic						[97]Tifinagh						[185]Hatran
+[10]Cyrillic Supplement					[98]Ethiopic Extended					[186]Phoenician
+[11]Armenian						[99]Cyrillic Extended-A					[187]Lydian
+[12]Hebrew						[100]Supplemental Punctuation				[188]Meroitic Hieroglyphs
+[13]Arabic						[101]CJK Radicals Supplement				[189]Meroitic Cursive
+[14]Syriac						[102]Kangxi Radicals					[190]Kharoshthi
+[15]Arabic Supplement					[103]Ideographic Description Characters			[191]Old South Arabian
+[16]Thaana						[104]CJK Symbols and Punctuation			[192]Old North Arabian
+[17]NKo							[105]Hiragana						[193]Manichaean
+[18]Samaritan						[106]Katakana						[194]Avestan
+[19]Mandaic						[107]Bopomofo						[195]Inscriptional Parthian
+[20]Arabic Extended-A					[108]Hangul Compatibility Jamo				[196]Inscriptional Pahlavi
+[21]Devanagari						[109]Kanbun						[197]Psalter Pahlavi
+[22]Bengali						[110]Bopomofo Extended					[198]Old Turkic
+[23]Gurmukhi						[111]CJK Strokes					[199]Old Hungarian
+[24]Gujarati						[112]Katakana Phonetic Extensions			[200]Rumi Numeral Symbols
+[25]Oriya						[113]Enclosed CJK Letters and Months			[201]Brahmi
+[26]Tamil						[114]CJK Compatibility					[202]Kaithi
+[27]Telugu						[115]CJK Unified Ideographs Extension A			[203]Sora Sompeng
+[28]Kannada						[116]Yijing Hexagram Symbols				[204]Chakma
+[29]Malayalam						[117]CJK Unified Ideographs				[205]Mahajani
+[30]Sinhala						[118]Yi Syllables					[206]Sharada
+[31]Thai						[119]Yi Radicals					[207]Sinhala Archaic Numbers
+[32]Lao							[120]Lisu						[208]Khojki
+[33]Tibetan						[121]Vai						[209]Multani
+[34]Myanmar						[122]Cyrillic Extended-B				[210]Khudawadi
+[35]Georgian						[123]Bamum						[211]Grantha
+[36]Hangul Jamo						[124]Modifier Tone Letters				[212]Tirhuta
+[37]Ethiopic						[125]Latin Extended-D					[213]Siddham
+[38]Ethiopic Supplement					[126]Syloti Nagri					[214]Modi
+[39]Cherokee						[127]Common Indic Number Forms				[215]Takri
+[40]Unified Canadian Aboriginal Syllabics		[128]Phags-pa						[216]Ahom
+[41]Ogham						[129]Saurashtra						[217]Warang Citi
+[42]Runic						[130]Devanagari Extended				[218]Pau Cin Hau
+[43]Tagalog						[131]Kayah Li						[219]Cuneiform
+[44]Hanunoo						[132]Rejang						[220]Cuneiform Numbers and Punctuation
+[45]Buhid						[133]Hangul Jamo Extended-A				[221]Early Dynastic Cuneiform
+[46]Tagbanwa						[134]Javanese						[222]Egyptian Hieroglyphs
+[47]Khmer						[135]Myanmar Extended-B					[223]Anatolian Hieroglyphs
+[48]Mongolian						[136]Cham						[224]Bamum Supplement
+[49]Unified Canadian Aboriginal Syllabics Extended	[137]Myanmar Extended-A					[225]Mro
+[50]Limbu						[138]Tai Viet						[226]Bassa Vah
+[51]Tai Le						[139]Meetei Mayek Extensions				[227]Pahawh Hmong
+[52]New Tai Lue						[140]Ethiopic Extended-A				[228]Miao
+[53]Khmer Symbols					[141]Latin Extended-E					[229]Kana Supplement
+[54]Buginese						[142]Cherokee Supplement				[230]Duployan
+[55]Tai Tham						[143]Meetei Mayek					[231]Shorthand Format Controls
+[56]Combining Diacritical Marks Extended		[144]Hangul Syllables					[232]Byzantine Musical Symbols
+[57]Balinese						[145]Hangul Jamo Extended-B				[233]Musical Symbols
+[58]Sundanese						[146]High Surrogates					[234]Ancient Greek Musical Notation
+[59]Batak						[147]High Private Use Surrogates			[235]Tai Xuan Jing Symbols
+[60]Lepcha						[148]Low Surrogates					[236]Counting Rod Numerals
+[61]Ol Chiki						[149]Private Use Area					[237]Mathematical Alphanumeric Symbols
+[62]Sundanese Supplement				[150]CJK Compatibility Ideographs			[238]Sutton SignWriting
+[63]Vedic Extensions					[151]Alphabetic Presentation Forms			[239]Mende Kikakui
+[64]Phonetic Extensions					[152]Arabic Presentation Forms-A			[240]Arabic Mathematical Alphabetic Symbols
+[65]Phonetic Extensions Supplement			[153]Variation Selectors				[241]Mahjong Tiles
+[66]Combining Diacritical Marks Supplement		[154]Vertical Forms					[242]Domino Tiles
+[67]Latin Extended Additional				[155]Combining Half Marks				[243]Playing Cards
+[68]Greek Extended					[156]CJK Compatibility Forms				[244]Enclosed Alphanumeric Supplement
+[69]General Punctuation					[157]Small Form Variants				[245]Enclosed Ideographic Supplement
+[70]Superscripts and Subscripts				[158]Arabic Presentation Forms-B			[246]Miscellaneous Symbols and Pictographs
+[71]Currency Symbols					[159]Halfwidth and Fullwidth Forms			[247]Emoticons
+[72]Combining Diacritical Marks for Symbols		[160]Specials						[248]Ornamental Dingbats
+[73]Letterlike Symbols					[161]Linear B Syllabary					[249]Transport and Map Symbols
+[74]Number Forms					[162]Linear B Ideograms					[250]Alchemical Symbols
+[75]Arrows						[163]Aegean Numbers					[251]Geometric Shapes Extended
+[76]Mathematical Operators				[164]Ancient Greek Numbers				[252]Supplemental Arrows-C
+[77]Miscellaneous Technical				[165]Ancient Symbols					[253]Supplemental Symbols and Pictographs
+[78]Control Pictures					[166]Phaistos Disc					[254]CJK Unified Ideographs Extension B
+[79]Optical Character Recognition			[167]Lycian						[255]CJK Unified Ideographs Extension C
+[80]Enclosed Alphanumerics				[168]Carian						[256]CJK Unified Ideographs Extension D
+[81]Box Drawing						[169]Coptic Epact Numbers				[257]CJK Unified Ideographs Extension E
+[82]Block Elements					[170]Old Italic						[258]CJK Compatibility Ideographs Supplement
+[83]Geometric Shapes					[171]Gothic						[259]Tags
+[84]Miscellaneous Symbols				[172]Old Permic						[260]Variation Selectors Supplement
+[85]Dingbats						[173]Ugaritic						[261]Supplementary Private Use Area-A
+[86]Miscellaneous Mathematical Symbols-A		[174]Old Persian					[262]Supplementary Private Use Area-B
+[87]Supplemental Arrows-A				[175]Deseret
+[88]Braille Patterns					[176]Shavian
